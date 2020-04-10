@@ -43,7 +43,7 @@ class CartController extends Controller
             session()->put('cart', $cart);
 
             return redirect()->back()->with('success','Product added to cart successfully!');
-        } 
+        }
 
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
@@ -112,6 +112,9 @@ class CartController extends Controller
         $bill->total = $total;
         $bill->note = $request->note;
         $bill->save();
+
+
+        //Bill detail là bảng trung gian
 
         foreach(session('cart') as $id => $details)
         {
